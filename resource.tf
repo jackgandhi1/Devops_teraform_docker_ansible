@@ -1,7 +1,7 @@
 resource "aws_instance" "web" {
   ami                    = "ami-048f6ed62451373d9"
   instance_type          = "t2.micro"
-  key_name               = "phproject_ec2application.pem"
+  key_name               = "phproject_ec2application"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
 
   tags = {
