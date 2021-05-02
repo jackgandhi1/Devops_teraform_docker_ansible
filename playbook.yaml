@@ -19,6 +19,6 @@
      - debug:
           var: hello
      
-     - command: docker pull docker.io/jackgandhi/jack_apachedoker:latest
+     - command: docker pull docker.io/jackgandhi/jack_apachedocker:latest
      
      - command: docker run -itd --name phpapplication -p 80:80 jackgandhi/jack_apachedocker:latest 
