@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Installing and start service of docker and create container from image
+  hosts: all
   become: true
   remote_user: ec2-user
   tasks:
@@ -11,9 +12,13 @@
        service:
          name: docker
          state: started
+
      - command: docker info
        register: hello
+     
      - debug:
           var: hello
-     - command: docker pull docker.io/kushalsamota/phpdemo
-     - command: docker run -itd --name phpdemo -p 80:80 kushalsamota/phpdemo
+     
+     - command: docker pull docker.io/jackgandhi/jack_apachedoker:latest
+     
+     - command: docker run -itd --name phpapplication -p 80:80 jackgandhi/jack_apachedocker:latest 

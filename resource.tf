@@ -1,11 +1,11 @@
 resource "aws_instance" "web" {
-  ami                    = "ami-04b1ddd35fd71475a"
+  ami                    = "ami-048f6ed62451373d9"
   instance_type          = "t2.micro"
-  key_name               = "phpapplication"
+  key_name               = "phproject_ec2application.pem"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
 
   tags = {
-    Name = "phpdemoserver"
+    Name = "PHP_Application_Server"
   }
   provisioner "local-exec" {
     command = "echo ${aws_instance.web.public_ip} >> inventory"
@@ -13,7 +13,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "allow_tls" {
-  name = "phpdemo"
+  name = "PHP_Application_sG"
 
   ingress {
     description = "TLS from VPC"
@@ -38,7 +38,7 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "phpdemo"
+    Name = "PHP_Application_SG"
   }
 }
 
