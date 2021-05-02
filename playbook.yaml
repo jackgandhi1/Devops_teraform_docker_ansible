@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  remote_user: ec2-user
+  tasks:
+     - name: install a package
+       yum:
+         name: docker
+         state: present
+     - name: start service
+       service:
+         name: docker
+         state: started
+     - command: docker info
+       register: hello
+     - debug:
+          var: hello
+     - command: docker pull docker.io/kushalsamota/phpdemo
+     - command: docker run -itd --name phpdemo -p 80:80 kushalsamota/phpdemo
