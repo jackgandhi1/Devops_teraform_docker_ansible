@@ -1,9 +1,9 @@
 ---
-- name: Installing and start service of docker and create container from image
-  hosts: all
-  become: true
-  remote_user: ec2-user
-  tasks:
+ - name: Installing and start service of docker and create container from image
+   hosts: all
+   become: true
+   remote_user: ec2-user
+   tasks:
      - name: install a package
        yum:
          name: docker
